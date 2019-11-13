@@ -37,6 +37,7 @@ public class SocketClient {
                 if (s == null) {
                     break;
                 }
+                System.out.println(s);
                 sb.append(s);
             }
             Thread.currentThread().sleep(50);
