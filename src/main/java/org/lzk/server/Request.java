@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+/**
+ * @author lzk
+ *
+ */
 public class Request {
     private InputStream in;
     private String uri;
@@ -17,13 +21,16 @@ public class Request {
      */
     public void parse() {
         StringBuilder sb = new StringBuilder(2048);
-        int i = 0;
-        byte[] buff = new byte[2048];//请求头长度不能超出2048个字节。
+
+        /**
+         * 请求头长度不能超出2048个字节。
+         */
+        byte[] buff = new byte[2048];
         try {
-            i = in.read(buff);
+            in.read(buff)
         } catch (IOException e) {
             e.printStackTrace();
-            i = -1;
+
         }
         for (int j = 0; j < buff.length; j++) {
             sb.append((char) buff[j]);
@@ -41,7 +48,7 @@ public class Request {
      */
     private String parseUri(String result) {
         Objects.requireNonNull(result);
-        String[] s = result.substring(0,result.indexOf("\n")).split(" ");
+        String[] s = result.substring(0, result.indexOf("\n")).split(" ");
         if (s.length > 1) {
             return s[1];
         }

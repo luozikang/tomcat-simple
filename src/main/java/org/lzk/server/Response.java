@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * @author
+ */
 public class Response {
     private static final String FILE_NOT_FIND_MESSAGE = "HTTP/1.1 404 File Not Found \nContent-Type: text/html\nContent-Length: 23\n\n<h1>File Not Found";
 

@@ -6,10 +6,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * @author lzk
+ *
  * 简版处理静态资源WEB服务器
  */
 public class HttpServer {
-    //web服务资源路径
+    /**
+     * web服务资源路径
+     */
     public static final String WEB_ROOT = System.getProperty("user.dir") + File.separator + "webroot";
     private static final String SHUTOWN_COMMAD = "/SHUTDOWN";
     private boolean shutdown = false;

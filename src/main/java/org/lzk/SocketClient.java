@@ -15,7 +15,7 @@ public class SocketClient {
         OutputStream outputStream = socket.getOutputStream();
 
         PrintWriter pw = new PrintWriter(outputStream, true);
-        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
         pw.println("GET / HTTP/1.1");
         pw.println("Connection: keep-alive");
         pw.println("Host: www.baidu.com");
@@ -40,7 +40,7 @@ public class SocketClient {
                 System.out.println(s);
                 sb.append(s);
             }
-            Thread.currentThread().sleep(50);
+            Thread.sleep(50);
         }
 
         System.out.println(sb.toString());

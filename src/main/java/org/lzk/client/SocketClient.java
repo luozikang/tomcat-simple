@@ -16,12 +16,13 @@ public class SocketClient {
     public void request(String ip, int port) throws IOException, InterruptedException {
         Socket socket = ((SSLSocketFactory)SSLSocketFactory.getDefault()).createSocket(ip, port);
 
-        boolean connected = socket.isConnected();
 
         PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"));
 
-//        "Connection: Close\n" + 该头信息为close流才会关闭，流不会返回，程序会处于阻塞阶段
+        /**
+         * "Connection: Close\n" + 该头信息为close流才会关闭，流不会返回，程序会处于阻塞阶段
+         */
         pw.print("GET /lzkmyname/tomcat-simple HTTP/1.0\n" +
                 "Host: github.com\n" +
                 "Connection: Close\n" +
@@ -52,7 +53,7 @@ public class SocketClient {
                 }
                 loop = false;
             }
-            Thread.currentThread().sleep(50);
+            Thread.sleep(50);
         }
 
         System.out.println(sb.toString());
@@ -61,10 +62,7 @@ public class SocketClient {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-//        new SocketClient().request("52.74.223.119", 443);
         new SocketClient().request("52.74.223.119", 443);
-//        System.out.println((int)'\uFFFF');
-//        new SocketClient().request("localhost", 8080);
     }
 
 
