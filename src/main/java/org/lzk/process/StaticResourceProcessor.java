@@ -1,10 +1,8 @@
 package org.lzk.process;
 
 
-import org.lzk.process.Processor;
-import org.lzk.server.Request;
-import org.lzk.server.Response;
-
+import org.lzk.http.Request;
+import org.lzk.http.Response;
 import java.io.IOException;
 
 /**

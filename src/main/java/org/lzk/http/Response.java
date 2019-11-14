@@ -1,11 +1,9 @@
 package org.lzk.http;
 
 import org.lzk.server.HttpServer;
-import org.lzk.server.Request;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
+;
 import java.io.*;
 import java.util.Locale;
 
@@ -23,7 +21,7 @@ public class Response implements ServletResponse {
     PrintWriter writer ;
 
 
-    private org.lzk.server.Request request;
+    private Request request;
     private static final String HSUCCESS_HEADER = "HTTP/1.1 200 OK\n" +
             "Connection: keep-alive\n" +
             "Content-Type: text/html; charset=utf-8\n\n";
@@ -41,8 +39,6 @@ public class Response implements ServletResponse {
         byte[] bytes = new byte[BUFFER_SIZE];
         FileInputStream fis = null;
         try {
-
-
             File file = new File(HttpServer.WEB_ROOT, request.getUri());
             if (file.exists()) {
                 //该响应头信息必须存在

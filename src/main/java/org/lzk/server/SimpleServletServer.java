@@ -19,6 +19,7 @@ public class SimpleServletServer {
 
     public static void main(String[] args) {
         SimpleServletServer container = new SimpleServletServer();
+        container.await();
     }
 
 
@@ -43,10 +44,10 @@ public class SimpleServletServer {
                 in = socket.getInputStream();
                 out = socket.getOutputStream();
 
-                Request request = new Request(in);
+                org.lzk.http.Request request = new org.lzk.http.Request(in);
                 request.parse();
 
-                Response response = new Response(out);
+                org.lzk.http.Response response = new org.lzk.http.Response(out);
                 response.setReqest(request);
 
                 /**
