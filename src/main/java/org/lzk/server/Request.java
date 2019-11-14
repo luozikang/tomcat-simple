@@ -27,7 +27,7 @@ public class Request {
          */
         byte[] buff = new byte[2048];
         try {
-            in.read(buff)
+            in.read(buff);
         } catch (IOException e) {
             e.printStackTrace();
 
