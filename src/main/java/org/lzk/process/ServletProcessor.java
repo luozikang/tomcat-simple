@@ -44,7 +44,7 @@ public class ServletProcessor implements Processor {
              */
             loader = new URLClassLoader(urls);
 
-            URLClassLoader
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
