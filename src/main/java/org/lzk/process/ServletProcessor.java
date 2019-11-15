@@ -26,7 +26,7 @@ public class ServletProcessor implements Processor {
     @Override
     public void processor(Request request, Response response) {
         String uri = request.getUri();
-        String servletName = uri.substring(uri.lastIndexOf("/") + 1);
+        String servletName = "org.lzk.servlet."+uri.substring(uri.lastIndexOf("/") + 1);
         URLClassLoader loader = null;
 
         try {
