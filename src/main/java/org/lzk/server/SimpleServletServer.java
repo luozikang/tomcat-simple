@@ -1,6 +1,8 @@
 package org.lzk.server;
 
 import org.lzk.constant.Constants;
+import org.lzk.http.Request;
+import org.lzk.http.Response;
 import org.lzk.process.ServletProcessor;
 import org.lzk.process.StaticResourceProcessor;
 
@@ -44,16 +46,16 @@ public class SimpleServletServer {
                 in = socket.getInputStream();
                 out = socket.getOutputStream();
 
-                org.lzk.http.Request request = new org.lzk.http.Request(in);
+                org.lzk.http.Request request = new Request(in);
                 request.parse();
 
-                org.lzk.http.Response response = new org.lzk.http.Response(out);
+                org.lzk.http.Response response = new Response(out);
                 response.setReqest(request);
 
                 /**
                  * 系统退出
                  */
-                if(request.getUri().equals(Constants.SHUTOWN_COMMAD)){
+                if (request.getUri().equals(Constants.SHUTOWN_COMMAD)) {
                     break;
                 }
 
