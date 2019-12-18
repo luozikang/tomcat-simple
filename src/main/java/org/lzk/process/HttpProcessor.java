@@ -12,7 +12,7 @@ import java.net.Socket;
 
 /**
  * @author: lzk
- * @version:
+ * @version: 处理http请求类
  * @date:2019/11/16 00:14
  * @description:
  */
@@ -33,8 +33,18 @@ public class HttpProcessor {
             request= new HttpRequest(in);
             response= new HttpResponse(out);
             response.setRequest(request);
+            response.setHeader("Server","Pyrmont Servlet Container");
+            parseRequest(in,out);
+            parseHeaders(in);
 
 
+            if(request.getRequestURI().startsWith("/servlet/")){
+                ServletProcessor servletProcessor = new ServletProcessor();
+                servletProcessor.processor(request,response);
+            }else{
+                StaticResourceProcessor staticResourceProcessor = new StaticResourceProcessor();
+                staticResourceProcessor.processor(request,response);
+            }
 
             socket.close();
         } catch (IOException e) {
@@ -42,7 +52,12 @@ public class HttpProcessor {
         }
 
 
+    }
 
+    private void parseHeaders(SocketInputStream in) {
 
+    }
+
+    private void parseRequest(SocketInputStream in, OutputStream out) {
     }
 }

@@ -9,7 +9,7 @@ import java.net.Socket;
 
 /**
  * @author: lzk
- * @version:
+ * @version: http 连接器,负责处理http请求
  * @date:2019/11/16 00:09
  * @description:
  */
